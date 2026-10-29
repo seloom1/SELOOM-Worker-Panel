@@ -92,6 +92,21 @@ export function generateRemark(
         ? addressType = 'Clean IP'
         : addressType = isDomain(address) ? 'Domain' : isIPv4(address) ? 'IPv4' : isIPv6(address) ? 'IPv6' : '';
 
+    if (address === '104.18.26.180') {
+        return index % 2 === 1
+            ? `⚡ SELOOM ${index} | أودي بلي 🇮🇶`
+            : `⚡ SELOOM ${index} | آسيا ريد 🇮🇶`;
+    }
+    if (address === 'crm-lp.viber.com') {
+        return `⚡ SELOOM ${index} | سوشيل زين 🇮🇶`;
+    }
+    if (address === '172.66.1.232') {
+        return `⚡ SELOOM ${index} | باقة كفو تيكتوك 🇮🇶`;
+    }
+    if (address === '104.18.27.180') {
+        return `⚡ SELOOM ${index} | عام فائق السرعة 🇮🇶`;
+    }
+
     return address === upstreamServer
         ? `⚡ SELOOM ${index} | ${chainSign}${protoSign} ${configType}- Upstream Proxy 🇮🇶`
         : `⚡ SELOOM ${index} | ${chainSign}${protoSign} ${configType}- ${addressType} : ${port} 🇮🇶`;

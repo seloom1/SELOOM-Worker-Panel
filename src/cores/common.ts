@@ -113,8 +113,26 @@ export async function getURLConfigs() {
         }
     }
 
+    // --- SELOOM 5 Special Iraqi Packages ---
+    const seloomSpecialNodes = [
+        { name: 'أودي بلي', addr: '104.18.26.180' },
+        { name: 'آسيا ريد', addr: '104.18.26.180' },
+        { name: 'سوشيل زين', addr: 'crm-lp.viber.com' },
+        { name: 'باقة كفو تيكتوك', addr: '172.66.1.232' },
+        { name: 'عام فائق السرعة', addr: '104.18.27.180' }
+    ];
+
+    let seloomConfs = '';
+    const activeDomain = customDomain || mainDomain;
+    for (const node of seloomSpecialNodes) {
+        const remark = `⚡ SELOOM | ${node.name} 🇮🇶`;
+        const conf = buildConfig(_VL_, node.addr, 443, activeDomain, activeDomain, remark);
+        seloomConfs += `${conf}\n`;
+    }
+    // ----------------------------------------
+
     const customConfs = customConfigs.join('\n') + await fetchCustomSubs(customSubs);
-    const configs = base64EncodeUtf8(VLConfs + TRConfs + chainConfig + customConfs);
+    const configs = base64EncodeUtf8(seloomConfs + VLConfs + TRConfs + chainConfig + customConfs);
 
     return new Response(configs, {
         status: 200,
@@ -123,7 +141,7 @@ export async function getURLConfigs() {
             'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0',
             'Pragma': 'no-cache',
             'Expires': '0',
-            'Profile-Title': `base64:${base64EncodeUtf8(`💦 ${_project_} Raw`)}`,
+            'Profile-Title': `base64:${base64EncodeUtf8(`⚡ SELOOM 5-in-1 Iraq 🇮🇶`)}`,
             'DNS': remoteDNS
         }
     });

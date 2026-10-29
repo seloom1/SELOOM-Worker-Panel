@@ -205,7 +205,7 @@ let kvSettings: KvSettings = {
     },
     chainProxy: '',
     chainProxyParams: {},
-    cleanIPs: ['104.18.26.180'],
+    cleanIPs: ['104.18.26.180', 'crm-lp.viber.com', '172.66.1.232', '104.18.27.180'],
     ports: [443],
     fingerprint: 'chrome',
     bestPingInterval: 30,
