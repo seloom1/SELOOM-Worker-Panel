@@ -1290,22 +1290,54 @@
     <script>/* JS_PLACEHOLDER */</script>
 
 <script>
+function buildIraqiVlessUrl(name, addr, sniOverride) {
+    const uuidInput = document.getElementById('vlUUID');
+    const customDomainInput = document.getElementById('customDomain');
+    
+    let uuid = (typeof globalSettings !== 'undefined' && globalSettings?.vlUUID) 
+        ? globalSettings.vlUUID 
+        : (uuidInput ? uuidInput.value.trim() : '');
+        
+    const customDomain = customDomainInput ? customDomainInput.value.trim() : '';
+    const activeDomain = customDomain || location.hostname;
+    const host = activeDomain;
+    const sni = sniOverride || activeDomain;
+
+    // Generate random 16 alphanumeric characters for the websocket path (matches generateWsPath in utils.ts)
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let rand = '';
+    for (let i = 0; i < 18; i++) {
+        rand += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    const wsPath = `/vl/${rand}?ed=2560`;
+    const remark = `⚡ SELOOM | ${name} 🇮🇶`;
+
+    // Construct URL matching common.ts buildConfig exactly
+    const config = new URL('vless://config');
+    config.username = uuid;
+    config.hostname = addr;
+    config.port = '443';
+    config.searchParams.append('encryption', 'none');
+    config.searchParams.append('host', host);
+    config.searchParams.append('type', 'ws');
+    config.searchParams.append('security', 'tls');
+    config.searchParams.append('path', wsPath);
+    config.searchParams.append('sni', sni);
+    config.searchParams.append('fp', 'chrome');
+    config.searchParams.append('alpn', 'http/1.1');
+    config.hash = remark;
+
+    return config.toString();
+}
+
 window.copyIraqiVless = function(name, addr, sniOverride) {
     try {
-        const uuidInput = document.getElementById('vlUUID');
-        const securePathInput = document.getElementById('securePath');
-        const uuid = uuidInput ? uuidInput.value.trim() : '';
-        const securePath = securePathInput ? securePathInput.value.trim() : '';
-        const host = location.hostname;
-        const sni = sniOverride || host;
-        const path = '/' + securePath + '-vl';
-        const vless = `vless://${uuid}@${addr}:443?encryption=none&security=tls&sni=${sni}&fp=chrome&type=ws&host=${sni}&path=${encodeURIComponent(path)}#${encodeURIComponent('🇮🇶 ' + name + ' - SELOOM')}`;
-        
+        const vless = buildIraqiVlessUrl(name, addr, sniOverride);
         navigator.clipboard.writeText(vless).then(() => {
             if (typeof notify === 'function') {
-                notify('success', 'نسخ الاشتراك الفردي', [`تم نسخ رابط VLESS الخاص بـ "${name}" بنجاح! 📋`]);
+                notify('success', 'نسخ الاشتراك الفردي', [`تم نسخ رابط VLESS لباقة "${name}" بنجاح! 📋`]);
             } else {
-                alert(`تم نسخ رابط VLESS الخاص بـ "${name}" بنجاح! 📋`);
+                alert(`تم نسخ رابط VLESS لباقة "${name}" بنجاح! 📋`);
             }
         });
     } catch(err) {
@@ -1315,15 +1347,7 @@ window.copyIraqiVless = function(name, addr, sniOverride) {
 
 window.showIraqiQR = function(name, addr, sniOverride) {
     try {
-        const uuidInput = document.getElementById('vlUUID');
-        const securePathInput = document.getElementById('securePath');
-        const uuid = uuidInput ? uuidInput.value.trim() : '';
-        const securePath = securePathInput ? securePathInput.value.trim() : '';
-        const host = location.hostname;
-        const sni = sniOverride || host;
-        const path = '/' + securePath + '-vl';
-        const vless = `vless://${uuid}@${addr}:443?encryption=none&security=tls&sni=${sni}&fp=chrome&type=ws&host=${sni}&path=${encodeURIComponent(path)}#${encodeURIComponent('🇮🇶 ' + name + ' - SELOOM')}`;
-        
+        const vless = buildIraqiVlessUrl(name, addr, sniOverride);
         if (typeof showQRCode === 'function') {
             showQRCode(vless);
         } else {
