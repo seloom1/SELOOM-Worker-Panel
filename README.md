@@ -12,7 +12,7 @@
   <b>A Powerful, Modern Cloudflare Proxy Panel with Zero-Balance Support & 1-Click Fast Deployment</b>
 </p>
 
-[✨ تثبيت سريع بنقرة واحدة (SELOOM Wizard)](https://github.com/Seloom1/SELOOM-Wizard) • [📖 الدليل وطريقة الاستخدام](#-دليل-الاستخدام) • [🚀 النشر اليدوي](#-النشر-اليدوي)
+### 🌐 [اضغط هنا لفتح موقع التثبيت السريع المباشر (SELOOM Wizard Online)](https://seloom-wizard.pages.dev) 🌐
 
 ---
 </div>
@@ -20,7 +20,7 @@
 ## 🌟 المميزات الرئيسية (Features)
 
 - 🇮🇶 **دعم الرصيد الصفري في العراق**: مدمج بآي بي نظيف مسبق الإعداد (`104.18.26.180`) متوافق مع شبكات زين وأودي العراقية ويخرج بآي بي بغداد (`104.28.157.136`).
-- ⚡ **تخطي حظر كلاودفلير (Error 1101)**: مبني ليعمل عبر **Cloudflare Pages** بدلاً من الروابط التقليدية لتفادي الحظر المؤقت وضمان استقرار الاتصال 24/7.
+- ⚡ **تخطي حظر كلاودفلير (Error 1101)**: مبني ليعمل عبر **Cloudflare Pages** بدلاً من الروابط التقليدية لتفادي الحظر وضمان استقرار الاتصال 24/7.
 - 📱 **دعم شامل لجميع التطبيقات**:
   - **v2rayNG** / **v2rayN**
   - **Sing-box** (Outbounds جاهزة ومقسمة)
@@ -32,42 +32,48 @@
 
 ---
 
-## 🚀 التثبيت السريع عبر SELOOM Wizard (موصى به)
+## 🚀 التثبيت السريع بنقرة واحدة (Web Edition)
 
-أسرع وأسهل طريقة لنشر لوحتك الخاصة خلال أقل من دقيقة دون الحاجة لكتابة أي كود:
+افتح الموقع المباشر للمعالج:
+👉 **[https://seloom-wizard.pages.dev](https://seloom-wizard.pages.dev)**
 
-1. افتح أداة التثبيت: [SELOOM Wizard](https://github.com/Seloom1/SELOOM-Wizard).
-2. أنشئ توكن من حساب كلاودفلير بصلاحيات `Workers & Pages`.
-3. الصق التوكن في المعالج واختر **Cloudflare Pages**.
-4. اضغط **Install**، وسيتم بناء ونشر اللوحة في حسابك وتزويدك برابط اللوحة وبيانات الدخول فوراً!
+1. أنشئ توكن من حساب كلاودفلير بصلاحيات `Workers & Pages`.
+2. الصق التوكن في المعالج واختر **Cloudflare Pages**.
+3. اضغط **Install SELOOM Panel**، وسيتم بناء ونشر اللوحة في حسابك وتزويدك بالرابط وبيانات الدخول فوراً!
+
+---
+
+## 💻 التثبيت عبر سطر الأوامر (CLI)
+
+- **ويندوز (PowerShell)**:
+  ```powershell
+  irm https://raw.githubusercontent.com/seloom1/SELOOM-Wizard/main/install.ps1 | iex
+  ```
+
+- **أندرويد (Termux) ولينكس**:
+  ```bash
+  bash <(curl -fsSL https://raw.githubusercontent.com/seloom1/SELOOM-Wizard/main/install.sh)
+  ```
 
 ---
 
 ## 🛠️ النشر اليدوي (Manual Deployment)
 
-إذا أردت نشر اللوحة يدوياً باستخدام كود المشروع:
-
 ```bash
-# 1. استنساخ المستودع
-git clone https://github.com/Seloom1/SELOOM-Worker-Panel.git
+git clone https://github.com/seloom1/SELOOM-Worker-Panel.git
 cd SELOOM-Worker-Panel
-
-# 2. تثبيت الحزم
 npm install
-
-# 3. بناء المشروع وتوليد الحزمة
 node scripts/build.js
 ```
-
-الملف الناتج `dist/worker.js` أو مجلد `deploy_to_pages/_worker.js` يمكنك رفعه مباشرة إلى **Cloudflare Pages**.
+الملف الناتج `dist/worker.js` جاهز للرفع مباشرة كـ `_worker.js` في **Cloudflare Pages**.
 
 ---
 
 ## 📄 الحقوق والترخيص (License & Credits)
 
-- المشروع مفتوح المصدر ومبني تحت رخصة [GNU General Public License v3.0](LICENSE).
-- تم تطوير وتخصيص هذا المشروع وإعداده بواسطة **[Seloom (Seloom1)](https://github.com/Seloom1)**.
-- تحية تقدير للمشروع الأصلي والمطورين في مجتمع البرمجيات الحرة ومطوري أدوات مكافحة حجب الإنترنت.
+- المشروع مفتوح المصدر تحت رخصة [GNU General Public License v3.0](LICENSE).
+- تم التطوير والإعداد والتخصيص بواسطة **[Seloom (Seloom1)](https://github.com/seloom1)**.
+- كل الاحترام والتقدير للمجتمع التقني المفتوح المصدر.
 
 ---
 <div align="center">
