@@ -765,9 +765,13 @@ function resetPassword(event) {
         return false;
     }
 
-    const valid = /^(?=.*[A-Z])(?=.*\d).{8,}$/.test(password);
+    if (password.length < 4) {
+        passwordError.textContent = 'كلمة المرور يجب أن تكون 4 خانات على الأقل (أرقام أو أحرف).';
+        return;
+    }
+    const valid = true;
     if (!valid) {
-        passwordError.textContent = 'Must contain at least one capital letter, one number, and be at least 8 characters long.';
+        
         return false;
     }
 

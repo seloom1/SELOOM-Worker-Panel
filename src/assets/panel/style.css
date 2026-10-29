@@ -1060,3 +1060,372 @@ table tr:not(:last-child) {
         width: 30%;
     }
 }
+
+/* ==========================================================================
+   SELOOM Modern Cyberpunk & Iraqi Community UI Additions
+   ========================================================================== */
+
+/* Top Bar */
+.panel-top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 16px auto 20px;
+    padding: 10px 20px;
+    background: rgba(13, 16, 35, 0.75);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(99, 102, 241, 0.25);
+    border-radius: var(--radius-card);
+    width: 95%;
+    max-width: 900px;
+}
+
+.top-bar-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 800;
+    color: #00f0ff;
+    font-size: 1rem;
+}
+.flag-badge {
+    font-size: 1.3rem;
+}
+.top-brand {
+    letter-spacing: 0.5px;
+}
+
+.top-bar-right {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.top-link-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: var(--transition);
+}
+.top-link-pill span.material-symbols-rounded {
+    font-size: 1rem;
+}
+
+.top-link-pill.tg-chan {
+    background: rgba(0, 136, 204, 0.18);
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.4);
+}
+.top-link-pill.tg-chan:hover {
+    background: #0088cc;
+    color: #fff;
+    box-shadow: 0 0 14px rgba(0, 136, 204, 0.6);
+}
+
+.top-link-pill.tg-dev {
+    background: rgba(168, 85, 247, 0.18);
+    color: #c084fc;
+    border: 1px solid rgba(168, 85, 247, 0.4);
+}
+.top-link-pill.tg-dev:hover {
+    background: #8b5cf6;
+    color: #fff;
+    box-shadow: 0 0 14px rgba(139, 92, 246, 0.6);
+}
+
+.top-link-pill.iq-app-pill {
+    background: rgba(16, 185, 129, 0.18);
+    color: #34d399;
+    border: 1px solid rgba(16, 185, 129, 0.4);
+}
+.top-link-pill.iq-app-pill:hover {
+    background: #10b981;
+    color: #fff;
+    box-shadow: 0 0 14px rgba(16, 185, 129, 0.6);
+}
+
+/* Custom Cyber Logo */
+.custom-cyber-logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    background: rgba(99, 102, 241, 0.25);
+    border: 1px solid rgba(0, 240, 255, 0.5);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.35);
+}
+.cyber-flag {
+    font-size: 1.8rem;
+}
+
+.panel-sub-title {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    margin-top: 2px;
+    font-weight: 500;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logout-btn {
+    background: rgba(239, 68, 68, 0.15) !important;
+    border: 1px solid rgba(239, 68, 68, 0.4) !important;
+    color: #f87171 !important;
+}
+.logout-btn:hover {
+    background: #ef4444 !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 14px rgba(239, 68, 68, 0.5) !important;
+}
+
+/* IQ Tunnel Promo Box */
+.iq-tunnel-promo-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 0 auto 24px;
+    padding: 18px 24px;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(6, 78, 59, 0.3) 100%);
+    border: 1px solid rgba(16, 185, 129, 0.4);
+    border-radius: var(--radius-card);
+    width: 95%;
+    max-width: 900px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(16, 185, 129, 0.15);
+}
+
+.iq-promo-content {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.iq-large-icon {
+    font-size: 2.4rem;
+    color: #34d399;
+}
+
+.iq-promo-texts h3 {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 4px;
+}
+
+.iq-promo-texts p {
+    font-size: 0.85rem;
+    color: #a7f3d0;
+}
+
+.iq-direct-download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: #ffffff;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 0.95rem;
+    text-decoration: none;
+    box-shadow: 0 4px 16px rgba(16, 185, 129, 0.4);
+    transition: var(--transition);
+}
+.iq-direct-download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.6);
+}
+
+/* Iraqi Packages Dedicated Card */
+.iraq-nodes-card {
+    border: 1px solid rgba(0, 240, 255, 0.35) !important;
+    background: rgba(13, 16, 35, 0.85) !important;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 240, 255, 0.12) !important;
+}
+
+.nodes-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.nodes-title-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.nodes-title-group h2 {
+    font-size: 1.35rem;
+    font-weight: 900;
+    color: #ffffff;
+}
+.bolt-icon {
+    color: #00f0ff;
+    font-size: 1.6rem;
+}
+
+.status-live-pill {
+    padding: 4px 12px;
+    background: rgba(0, 240, 255, 0.15);
+    border: 1px solid rgba(0, 240, 255, 0.4);
+    border-radius: 50px;
+    color: #00f0ff;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.nodes-subtitle {
+    font-size: 0.88rem;
+    color: #94a3b8;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.iraqi-packages-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.package-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    padding: 14px 18px;
+    background: rgba(19, 24, 52, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    transition: var(--transition);
+}
+.package-row:hover {
+    border-color: rgba(0, 240, 255, 0.4);
+    background: rgba(19, 24, 52, 0.85);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.pkg-main-info {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.pkg-badge {
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    min-width: 75px;
+    text-align: center;
+}
+.pkg-badge.oodi {
+    background: rgba(245, 158, 11, 0.2);
+    color: #fbbf24;
+    border: 1px solid rgba(245, 158, 11, 0.4);
+}
+.pkg-badge.asia {
+    background: rgba(239, 68, 68, 0.2);
+    color: #f87171;
+    border: 1px solid rgba(239, 68, 68, 0.4);
+}
+.pkg-badge.zain {
+    background: rgba(59, 130, 246, 0.2);
+    color: #60a5fa;
+    border: 1px solid rgba(59, 130, 246, 0.4);
+}
+.pkg-badge.tiktok {
+    background: rgba(236, 72, 153, 0.2);
+    color: #f472b6;
+    border: 1px solid rgba(236, 72, 153, 0.4);
+}
+.pkg-badge.turbo {
+    background: rgba(16, 185, 129, 0.2);
+    color: #34d399;
+    border: 1px solid rgba(16, 185, 129, 0.4);
+}
+
+.pkg-details h4 {
+    font-size: 1rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 4px;
+}
+
+.pkg-meta {
+    font-size: 0.82rem;
+    color: #94a3b8;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.pkg-meta code {
+    color: #00f0ff;
+    font-weight: 600;
+    font-family: monospace;
+}
+.sep {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.pkg-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-copy-vless {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: linear-gradient(135deg, #00f0ff 0%, #0284c7 100%);
+    color: #04101e;
+    border: none;
+    border-radius: 8px;
+    font-weight: 800;
+    font-size: 0.85rem;
+    cursor: pointer;
+    box-shadow: 0 3px 12px rgba(0, 240, 255, 0.3);
+    transition: var(--transition);
+}
+.btn-copy-vless:hover {
+    transform: scale(1.04);
+    box-shadow: 0 6px 18px rgba(0, 240, 255, 0.55);
+}
+
+.btn-qr-vless {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+.btn-qr-vless:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: #00f0ff;
+    color: #00f0ff;
+}

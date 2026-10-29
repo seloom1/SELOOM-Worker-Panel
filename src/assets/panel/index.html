@@ -8,11 +8,9 @@
     <link id="favicon" rel="icon" type="image/x-icon" href="data:image/x-icon;base64,__ICON__">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=add_circle,autorenew,cancel,check_circle,clock_loader_40,close,cloud_download,cloud_upload,code_xml,content_copy,dashboard,data_usage,delete,dns,download,draft,error,fingerprint,help,info,key_vertical,keyboard_arrow_down,link,logout,open_in_new,qr_code,refresh,save,settings,settings_backup_restore,share,smart_toy,terminal,tune,upgrade,upload,verified,visibility,visibility_off&display=block" />
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=send,shield,verified,qr_code_2,add_circle,autorenew,cancel,check_circle,clock_loader_40,close,cloud_download,cloud_upload,code_xml,content_copy,dashboard,data_usage,delete,dns,download,draft,error,fingerprint,help,info,key_vertical,keyboard_arrow_down,link,logout,open_in_new,qr_code,refresh,save,settings,settings_backup_restore,share,smart_toy,terminal,tune,upgrade,upload,verified,visibility,visibility_off&display=block" />
     <link id="favicon" rel="icon" type="image/x-icon" href="data:image/x-icon;base64,__ICON__">
     <style>
         /* CSS_PLACEHOLDER */
@@ -20,27 +18,53 @@
 </head>
 
 <body>
+    <!-- Social & Community Top Bar -->
+    <div class="panel-top-bar">
+        <div class="top-bar-left">
+            <span class="flag-badge">🇮🇶</span>
+            <span class="top-brand">SELOOM NETWORK</span>
+        </div>
+        <div class="top-bar-right">
+            <a href="https://t.me/freevpsiraq" target="_blank" class="top-link-pill tg-chan" title="قناة التلجرام الرسمية">
+                <span class="material-symbols-rounded">send</span>
+                <span>قناة التلجرام: @freevpsiraq</span>
+            </a>
+            <a href="https://t.me/seloom1" target="_blank" class="top-link-pill tg-dev" title="معرف المطور">
+                <span class="material-symbols-rounded">verified</span>
+                <span>المطور: @seloom1</span>
+            </a>
+            <a href="https://t.me/freevpsiraq/210" target="_blank" class="top-link-pill iq-app-pill" title="تحميل تطبيق IQ Tunnel">
+                <span class="material-symbols-rounded">download</span>
+                <span>تحميل IQ Tunnel ⚡</span>
+            </a>
+        </div>
+    </div>
+
     <div class="header">
         <div class="header-title">
-            <img id="header-logo" src="data:image/x-icon;base64,__ICON__" alt="SELOOM Logo" width="48" height="48">
-            <h1>
-                SELOOM Panel
-                <span class="panel-version">
-                    v__VERSION__
-                </span>
-            </h1>
+            <div class="custom-cyber-logo">
+                <span class="cyber-flag">🇮🇶</span>
+            </div>
+            <div>
+                <h1>
+                    SELOOM Panel
+                    <span class="panel-version">v__VERSION__</span>
+                </h1>
+                <p class="panel-sub-title">لوحة إدارة وتحكم خوادم البروكسي والاشتراكات العراقية</p>
+            </div>
         </div>
-        <a class="link" id="github-link" href="https://github.com/bia-pain-bache/BPB-Worker-Panel" target="_blank">
-            <span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" viewBox="0 0 24 24" fill="white">
-                    <path
-                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                </svg>
-            </span>
-        </a>
-        <button type="button" id="logout" class="panel-settings" title="Log out" onclick="logout(event)">
-            <span class="material-symbols-rounded">logout</span>
-        </button>
+        <div class="header-actions">
+            <a class="link github-btn" id="github-link" href="https://github.com/Seloom1/SELOOM-Worker-Panel" target="_blank" title="مستودع جيت هاب">
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1.6rem" height="1.6rem" viewBox="0 0 24 24" fill="white">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                    </svg>
+                </span>
+            </a>
+            <button type="button" id="logout" class="panel-settings logout-btn" title="تسجيل الخروج" onclick="logout(event)">
+                <span class="material-symbols-rounded">logout</span>
+            </button>
+        </div>
     </div>
 
     <div class="container form-container">
@@ -936,52 +960,152 @@
         </form>
     </div>
 
-        <div class="form-container container" style="border: 1px solid rgba(16, 185, 129, 0.4); box-shadow: 0 0 25px rgba(16, 185, 129, 0.15);">
-        <h2><span class="material-symbols-rounded" style="color: #10b981;">bolt</span> باقات العراق المخصصة (SELOOM 5-in-1) 🇮🇶</h2>
-        <div style="font-size: 13px; color: #a7f3d0; margin-bottom: 16px; font-weight: 500;">تم ضبط وتجهيز 5 اشتراكات خاصة مسبقاً تعمل بأعلى سرعة وتدعم الرصيد الصفري</div>
-        <div class="info-table">
-            <table>
-                <thead>
-                    <tr>
-                        <th scope="col">اسم الباقة</th>
-                        <th scope="col">الشبكة والمنفذ</th>
-                        <th scope="col">الآي بي / العنوان النظيف</th>
-                        <th scope="col">الحالة</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><b>⚡ أودي بلي</b></td>
-                        <td>Zain / Oodi (443)</td>
-                        <td><code>104.18.26.180</code></td>
-                        <td><span style="color: #10b981; font-weight: 700;">نشط ⚡</span></td>
-                    </tr>
-                    <tr>
-                        <td><b>⚡ آسيا ريد</b></td>
-                        <td>Asiacell (443)</td>
-                        <td><code>104.18.26.180</code></td>
-                        <td><span style="color: #10b981; font-weight: 700;">نشط ⚡</span></td>
-                    </tr>
-                    <tr>
-                        <td><b>⚡ سوشيل زين</b></td>
-                        <td>Zain Social (443)</td>
-                        <td><code>crm-lp.viber.com</code></td>
-                        <td><span style="color: #10b981; font-weight: 700;">نشط ⚡</span></td>
-                    </tr>
-                    <tr>
-                        <td><b>⚡ باقة كفو تيكتوك</b></td>
-                        <td>Kafu TikTok (443)</td>
-                        <td><code>172.66.1.232</code></td>
-                        <td><span style="color: #10b981; font-weight: 700;">نشط ⚡</span></td>
-                    </tr>
-                    <tr>
-                        <td><b>⚡ عام فائق السرعة</b></td>
-                        <td>All Networks (443)</td>
-                        <td><code>104.18.27.180</code></td>
-                        <td><span style="color: #10b981; font-weight: 700;">نشط ⚡</span></td>
-                    </tr>
-                </tbody>
-            </table>
+        <!-- IQ Tunnel Official Application Banner -->
+    <div class="iq-tunnel-promo-box">
+        <div class="iq-promo-content">
+            <span class="material-symbols-rounded iq-large-icon">download_for_offline</span>
+            <div class="iq-promo-texts">
+                <h3>تحميل تطبيق IQ Tunnel الرسمي لشبكات العراق 🇮🇶</h3>
+                <p>التطبيق المعتمد والأسرع لتشغيل باقات أودي، آسيا سيل، وزين برصيد صفري وبدون أي تقطيع.</p>
+            </div>
+        </div>
+        <a href="https://t.me/freevpsiraq/210" target="_blank" class="iq-direct-download-btn">
+            <span class="material-symbols-rounded">download</span>
+            <span>تحميل تطبيق IQ Tunnel 📥</span>
+        </a>
+    </div>
+
+    <!-- 5-in-1 Dedicated Iraqi Subscription Nodes with Individual Copy Buttons -->
+    <div class="form-container container iraq-nodes-card">
+        <div class="nodes-card-header">
+            <div class="nodes-title-group">
+                <span class="material-symbols-rounded bolt-icon">bolt</span>
+                <h2>باقات العراق المخصصة (SELOOM 5-in-1) 🇮🇶</h2>
+            </div>
+            <span class="status-live-pill">5 باقات جاهزة للنسخ الفردي ⚡</span>
+        </div>
+        <p class="nodes-subtitle">تم تجهيز وضبط كل باقة بآيبي وهوست نظيف مخصص لكل شبكة مع إمكانية نسخ رابط VLESS لكل باقة على حدة بنقرة واحدة:</p>
+
+        <div class="iraqi-packages-list">
+            <!-- Package 1: Oodi Play -->
+            <div class="package-row">
+                <div class="pkg-main-info">
+                    <div class="pkg-badge oodi">أودي / زين</div>
+                    <div class="pkg-details">
+                        <h4>⚡ باقة أودي بلي (Oodi Play)</h4>
+                        <div class="pkg-meta">
+                            <span>الآي بي النظيف: <code>104.18.26.180</code></span>
+                            <span class="sep">•</span>
+                            <span>المنفذ: <code>443 TLS</code></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="pkg-actions">
+                    <button type="button" class="btn-copy-vless" onclick="copyIraqiVless('باقة أودي بلي', '104.18.26.180')">
+                        <span class="material-symbols-rounded">content_copy</span>
+                        <span>نسخ VLESS</span>
+                    </button>
+                    <button type="button" class="btn-qr-vless" title="عرض QR Code" onclick="showIraqiQR('باقة أودي بلي', '104.18.26.180')">
+                        <span class="material-symbols-rounded">qr_code_2</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Package 2: Asiacell Red -->
+            <div class="package-row">
+                <div class="pkg-main-info">
+                    <div class="pkg-badge asia">آسيا سيل</div>
+                    <div class="pkg-details">
+                        <h4>⚡ باقة آسيا ريد (Asiacell Red)</h4>
+                        <div class="pkg-meta">
+                            <span>الآي بي النظيف: <code>104.18.26.180</code></span>
+                            <span class="sep">•</span>
+                            <span>المنفذ: <code>443 TLS</code></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="pkg-actions">
+                    <button type="button" class="btn-copy-vless" onclick="copyIraqiVless('باقة آسيا ريد', '104.18.26.180')">
+                        <span class="material-symbols-rounded">content_copy</span>
+                        <span>نسخ VLESS</span>
+                    </button>
+                    <button type="button" class="btn-qr-vless" title="عرض QR Code" onclick="showIraqiQR('باقة آسيا ريد', '104.18.26.180')">
+                        <span class="material-symbols-rounded">qr_code_2</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Package 3: Zain Social -->
+            <div class="package-row">
+                <div class="pkg-main-info">
+                    <div class="pkg-badge zain">سوشيل زين</div>
+                    <div class="pkg-details">
+                        <h4>⚡ باقة سوشيل زين (Zain Social)</h4>
+                        <div class="pkg-meta">
+                            <span>الهوست / العنوان: <code>crm-lp.viber.com</code></span>
+                            <span class="sep">•</span>
+                            <span>المنفذ: <code>443 TLS</code></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="pkg-actions">
+                    <button type="button" class="btn-copy-vless" onclick="copyIraqiVless('باقة سوشيل زين', 'crm-lp.viber.com', 'crm-lp.viber.com')">
+                        <span class="material-symbols-rounded">content_copy</span>
+                        <span>نسخ VLESS</span>
+                    </button>
+                    <button type="button" class="btn-qr-vless" title="عرض QR Code" onclick="showIraqiQR('باقة سوشيل زين', 'crm-lp.viber.com', 'crm-lp.viber.com')">
+                        <span class="material-symbols-rounded">qr_code_2</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Package 4: Kafu TikTok -->
+            <div class="package-row">
+                <div class="pkg-main-info">
+                    <div class="pkg-badge tiktok">كفو تيكتوك</div>
+                    <div class="pkg-details">
+                        <h4>⚡ باقة كفو تيكتوك (Kafu TikTok)</h4>
+                        <div class="pkg-meta">
+                            <span>الآي بي النظيف: <code>172.66.1.232</code></span>
+                            <span class="sep">•</span>
+                            <span>المنفذ: <code>443 TLS</code></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="pkg-actions">
+                    <button type="button" class="btn-copy-vless" onclick="copyIraqiVless('باقة كفو تيكتوك', '172.66.1.232')">
+                        <span class="material-symbols-rounded">content_copy</span>
+                        <span>نسخ VLESS</span>
+                    </button>
+                    <button type="button" class="btn-qr-vless" title="عرض QR Code" onclick="showIraqiQR('باقة كفو تيكتوك', '172.66.1.232')">
+                        <span class="material-symbols-rounded">qr_code_2</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Package 5: SELOOM Turbo -->
+            <div class="package-row">
+                <div class="pkg-main-info">
+                    <div class="pkg-badge turbo">فائق السرعة</div>
+                    <div class="pkg-details">
+                        <h4>⚡ باقة عامة فائقة السرعة (SELOOM Turbo)</h4>
+                        <div class="pkg-meta">
+                            <span>الآي بي النظيف: <code>104.18.27.180</code></span>
+                            <span class="sep">•</span>
+                            <span>المنفذ: <code>443 TLS</code></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="pkg-actions">
+                    <button type="button" class="btn-copy-vless" onclick="copyIraqiVless('باقة عامة سريعة', '104.18.27.180')">
+                        <span class="material-symbols-rounded">content_copy</span>
+                        <span>نسخ VLESS</span>
+                    </button>
+                    <button type="button" class="btn-qr-vless" title="عرض QR Code" onclick="showIraqiQR('باقة عامة سريعة', '104.18.27.180')">
+                        <span class="material-symbols-rounded">qr_code_2</span>
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -1048,14 +1172,14 @@
                 </div>
                 <form class="config-form">
                     <div class="section">
-                        <div id="usernameContainer" class="modal-form-control" style="display: none;">
-                            <label for="username">Cloudflare Email</label>
-                            <input type="text" id="username" name="username" autocomplete="on">
+                        <div id="usernameContainer" class="modal-form-control">
+                            <label for="username">البريد الإلكتروني (Gmail / Email)</label>
+                            <input type="text" id="username" name="username" placeholder="example@gmail.com" autocomplete="on" dir="ltr">
                         </div>
                         <div class="modal-form-control">
-                            <label for="newPassword">New Password</label>
+                            <label for="newPassword">كلمة المرور الجديدة (أرقام أو أحرف عادية 4+)</label>
                             <div class="password-wrapper">
-                                <input type="password" id="newPassword" name="newPassword" required>
+                                <input type="password" id="newPassword" name="newPassword" placeholder="أي كلمة مرور أو رمز تريده" required dir="ltr">
                                 <span class="material-symbols-rounded show-hide">
                                     visibility_off
                                 </span>
@@ -1164,6 +1288,53 @@
         polyfillCountryFlagEmojis();
     </script>
     <script>/* JS_PLACEHOLDER */</script>
+
+<script>
+window.copyIraqiVless = function(name, addr, sniOverride) {
+    try {
+        const uuidInput = document.getElementById('vlUUID');
+        const securePathInput = document.getElementById('securePath');
+        const uuid = uuidInput ? uuidInput.value.trim() : '';
+        const securePath = securePathInput ? securePathInput.value.trim() : '';
+        const host = location.hostname;
+        const sni = sniOverride || host;
+        const path = '/' + securePath + '-vl';
+        const vless = `vless://${uuid}@${addr}:443?encryption=none&security=tls&sni=${sni}&fp=chrome&type=ws&host=${sni}&path=${encodeURIComponent(path)}#${encodeURIComponent('🇮🇶 ' + name + ' - SELOOM')}`;
+        
+        navigator.clipboard.writeText(vless).then(() => {
+            if (typeof notify === 'function') {
+                notify('success', 'نسخ الاشتراك الفردي', [`تم نسخ رابط VLESS الخاص بـ "${name}" بنجاح! 📋`]);
+            } else {
+                alert(`تم نسخ رابط VLESS الخاص بـ "${name}" بنجاح! 📋`);
+            }
+        });
+    } catch(err) {
+        console.error('Copy error:', err);
+    }
+};
+
+window.showIraqiQR = function(name, addr, sniOverride) {
+    try {
+        const uuidInput = document.getElementById('vlUUID');
+        const securePathInput = document.getElementById('securePath');
+        const uuid = uuidInput ? uuidInput.value.trim() : '';
+        const securePath = securePathInput ? securePathInput.value.trim() : '';
+        const host = location.hostname;
+        const sni = sniOverride || host;
+        const path = '/' + securePath + '-vl';
+        const vless = `vless://${uuid}@${addr}:443?encryption=none&security=tls&sni=${sni}&fp=chrome&type=ws&host=${sni}&path=${encodeURIComponent(path)}#${encodeURIComponent('🇮🇶 ' + name + ' - SELOOM')}`;
+        
+        if (typeof showQRCode === 'function') {
+            showQRCode(vless);
+        } else {
+            prompt('رابط VLESS:', vless);
+        }
+    } catch(err) {
+        console.error('QR error:', err);
+    }
+};
+</script>
+
 </body>
 
 </html>

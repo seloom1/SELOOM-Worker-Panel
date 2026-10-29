@@ -15,11 +15,32 @@ export async function generateJWTToken(request: Request, env: Env): Promise<Resp
     }
 
     const data = await request.json() as any;
-    const savedPass = await env.kv.get('pwd');
+    let savedPass = await env.kv.get('pwd');
+    const savedEmail = (await env.kv.get('user_email'))?.toLowerCase();
     const { accEmail } = getGlobals();
-    const username = data.username?.toLowerCase();
-    if (username !== accEmail || data.password !== savedPass) {
-        return respond(false, HttpStatus.UNAUTHORIZED, 'Wrong Credentials.');
+    const username = data.username?.toLowerCase()?.trim();
+    const password = data.password?.trim();
+
+    // If no password configured yet in KV, first login establishes the credentials!
+    if (!savedPass) {
+        if (!password || password.length < 4) {
+            return respond(false, HttpStatus.BAD_REQUEST, 'يرجى إدخال كلمة مرور من 4 خانات أو أكثر.');
+        }
+        savedPass = password;
+        await env.kv.put('pwd', savedPass);
+        if (username) {
+            await env.kv.put('user_email', username);
+        }
+    } else {
+        // Authenticate password
+        if (password !== savedPass) {
+            return respond(false, HttpStatus.UNAUTHORIZED, 'كلمة المرور غير صحيحة.');
+        }
+        // If an email is bound, verify if username was supplied
+        const expectedEmail = savedEmail || accEmail?.toLowerCase();
+        if (expectedEmail && username && username !== expectedEmail && username !== accEmail?.toLowerCase()) {
+            return respond(false, HttpStatus.UNAUTHORIZED, 'اسم المستخدم أو البريد الإلكتروني غير صحيح.');
+        }
     }
 
     let secretKey = await env.kv.get('secretKey');
@@ -83,23 +104,17 @@ export async function resetPassword(request: Request, env: Env): Promise<Respons
     }
 
     const data = await request.json() as any;
-    const { accEmail } = getGlobals();
-
-    if (!auth && !data.username) {
-        return respond(false, HttpStatus.BAD_REQUEST, 'Missing username.');
+    const password = data.password?.trim();
+    if (!password || password.length < 4) {
+        return respond(false, HttpStatus.BAD_REQUEST, 'كلمة المرور يجب أن لا تقل عن 4 خانات.');
     }
 
-    if (data.username && data.username !== accEmail) {
-        return respond(false, HttpStatus.BAD_REQUEST, 'Wrong username.');
+    await env.kv.put('pwd', password);
+    if (data.username) {
+        await env.kv.put('user_email', data.username.toLowerCase().trim());
     }
 
-    if (data.password === oldPwd) {
-        return respond(false, HttpStatus.BAD_REQUEST, 'Please enter a new Password.');
-    }
-
-    await env.kv.put('pwd', data.password);
-
-    return respond(true, HttpStatus.OK, 'Successfully logged in!', null, {
+    return respond(true, HttpStatus.OK, 'تم تغيير كلمة المرور بنجاح!', null, {
         'Set-Cookie': 'jwtToken=; Path=/; Secure; SameSite=Strict; Expires=Thu, 01 Jan 1970 00:00:00 GMT',
         'Content-Type': 'text/plain',
     });
