@@ -106,6 +106,8 @@ async function buildWorker() {
 
     mkdirSync(DIST_PATH, { recursive: true });
     writeFileSync('./dist/worker.js', worker, 'utf8');
+    mkdirSync(join(__dirname, '../deploy_to_pages'), { recursive: true });
+    writeFileSync(join(__dirname, '../deploy_to_pages/_worker.js'), worker, 'utf8');
 
     console.log(`${success} Done!`);
 }

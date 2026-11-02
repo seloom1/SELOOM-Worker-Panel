@@ -1294,45 +1294,55 @@ function buildIraqiVlessUrl(name, addr, sniOverride) {
     const uuidInput = document.getElementById('vlUUID');
     const customDomainInput = document.getElementById('customDomain');
     
-    let uuid = (typeof globalSettings !== 'undefined' && globalSettings?.vlUUID) 
-        ? globalSettings.vlUUID 
-        : (uuidInput ? uuidInput.value.trim() : '');
-        
-    const customDomain = customDomainInput ? customDomainInput.value.trim() : '';
-    const activeDomain = customDomain || location.hostname;
+    let uuid = (window.globalProxySettings && window.globalProxySettings.vlUUID)
+        || (uuidInput && uuidInput.value.trim())
+        || '';
+
+    if (!uuid && typeof globalThis.initialFormData !== 'undefined') {
+        uuid = globalThis.initialFormData.get('vlUUID') || '';
+    }
+
+    if (!uuid) {
+        if (typeof notify === 'function') {
+            notify('error', 'تنبيه', ['يرجى الانتظار ثانية واحدة لاكتمال تحميل إعدادات اللوحة.']);
+        } else {
+            alert('يرجى الانتظار لاكتمال تحميل إعدادات اللوحة.');
+        }
+        return null;
+    }
+
+    const customDomainVal = (customDomainInput && customDomainInput.value.trim())
+        || (window.globalProxySettings && window.globalProxySettings.customDomain)
+        || '';
+
+    const mainDomainVal = (window.globalProxySettings && window.globalProxySettings.mainDomain)
+        || location.hostname;
+
+    const activeDomain = customDomainVal || mainDomainVal;
     const host = activeDomain;
     const sni = sniOverride || activeDomain;
 
-    // Generate random 16 alphanumeric characters for the websocket path (matches generateWsPath in utils.ts)
+    // Generate random 16-18 alphanumeric characters for the websocket path (matches generateWsPath in utils.ts)
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     let rand = '';
     for (let i = 0; i < 18; i++) {
         rand += chars.charAt(Math.floor(Math.random() * chars.length));
     }
     const wsPath = `/vl/${rand}?ed=2560`;
-    const remark = `⚡ SELOOM | ${name} 🇮🇶`;
+    const encodedWsPath = encodeURIComponent(wsPath);
 
-    // Construct URL matching common.ts buildConfig exactly
-    const config = new URL('vless://config');
-    config.username = uuid;
-    config.hostname = addr;
-    config.port = '443';
-    config.searchParams.append('encryption', 'none');
-    config.searchParams.append('host', host);
-    config.searchParams.append('type', 'ws');
-    config.searchParams.append('security', 'tls');
-    config.searchParams.append('path', wsPath);
-    config.searchParams.append('sni', sni);
-    config.searchParams.append('fp', 'chrome');
-    config.searchParams.append('alpn', 'http/1.1');
-    config.hash = remark;
+    // Standard remarks without pipe (|) to prevent java.net.URISyntaxException in Android/Java apps (v2rayNG, IQ Tunnel)
+    const remark = `⚡ SELOOM - ${name} 🇮🇶`;
+    const encodedRemark = encodeURIComponent(remark);
 
-    return config.toString();
+    // Universal standard VLESS share URL compatible with v2rayNG, IQ Tunnel, Sing-box, Shadowrocket, Streisand, NekoBox, Clash Verge, V2RayN
+    return `vless://${uuid}@${addr}:443?encryption=none&security=tls&sni=${encodeURIComponent(sni)}&alpn=http/1.1&fp=chrome&type=ws&host=${encodeURIComponent(host)}&path=${encodedWsPath}#${encodedRemark}`;
 }
 
 window.copyIraqiVless = function(name, addr, sniOverride) {
     try {
         const vless = buildIraqiVlessUrl(name, addr, sniOverride);
+        if (!vless) return;
         navigator.clipboard.writeText(vless).then(() => {
             if (typeof notify === 'function') {
                 notify('success', 'نسخ الاشتراك الفردي', [`تم نسخ رابط VLESS لباقة "${name}" بنجاح! 📋`]);
@@ -1348,6 +1358,7 @@ window.copyIraqiVless = function(name, addr, sniOverride) {
 window.showIraqiQR = function(name, addr, sniOverride) {
     try {
         const vless = buildIraqiVlessUrl(name, addr, sniOverride);
+        if (!vless) return;
         if (typeof showQRCode === 'function') {
             showQRCode(vless);
         } else {

@@ -94,22 +94,22 @@ export function generateRemark(
 
     if (address === '104.18.26.180') {
         return index % 2 === 1
-            ? `⚡ SELOOM ${index} | أودي بلي 🇮🇶`
-            : `⚡ SELOOM ${index} | آسيا ريد 🇮🇶`;
+            ? `⚡ SELOOM ${index} - أودي بلي 🇮🇶`
+            : `⚡ SELOOM ${index} - آسيا ريد 🇮🇶`;
     }
     if (address === 'crm-lp.viber.com') {
-        return `⚡ SELOOM ${index} | سوشيل زين 🇮🇶`;
+        return `⚡ SELOOM ${index} - سوشيل زين 🇮🇶`;
     }
     if (address === '172.66.1.232') {
-        return `⚡ SELOOM ${index} | باقة كفو تيكتوك 🇮🇶`;
+        return `⚡ SELOOM ${index} - باقة كفو تيكتوك 🇮🇶`;
     }
     if (address === '104.18.27.180') {
-        return `⚡ SELOOM ${index} | عام فائق السرعة 🇮🇶`;
+        return `⚡ SELOOM ${index} - عام فائق السرعة 🇮🇶`;
     }
 
     return address === upstreamServer
-        ? `⚡ SELOOM ${index} | ${chainSign}${protoSign} ${configType}- Upstream Proxy 🇮🇶`
-        : `⚡ SELOOM ${index} | ${chainSign}${protoSign} ${configType}- ${addressType} : ${port} 🇮🇶`;
+        ? `⚡ SELOOM ${index} - ${chainSign}${protoSign} ${configType}- Upstream Proxy 🇮🇶`
+        : `⚡ SELOOM ${index} - ${chainSign}${protoSign} ${configType}- ${addressType} : ${port} 🇮🇶`;
 }
 
 export function randomUpperCase(str: string): string {

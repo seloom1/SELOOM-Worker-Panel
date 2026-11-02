@@ -115,18 +115,19 @@ export async function getURLConfigs() {
 
     // --- SELOOM 5 Special Iraqi Packages ---
     const seloomSpecialNodes = [
-        { name: 'أودي بلي', addr: '104.18.26.180' },
-        { name: 'آسيا ريد', addr: '104.18.26.180' },
-        { name: 'سوشيل زين', addr: 'crm-lp.viber.com' },
-        { name: 'باقة كفو تيكتوك', addr: '172.66.1.232' },
-        { name: 'عام فائق السرعة', addr: '104.18.27.180' }
+        { name: 'أودي بلي', addr: '104.18.26.180', sni: '' },
+        { name: 'آسيا ريد', addr: '104.18.26.180', sni: '' },
+        { name: 'سوشيل زين', addr: 'crm-lp.viber.com', sni: 'crm-lp.viber.com' },
+        { name: 'باقة كفو تيكتوك', addr: '172.66.1.232', sni: '' },
+        { name: 'عام فائق السرعة', addr: '104.18.27.180', sni: '' }
     ];
 
     let seloomConfs = '';
     const activeDomain = customDomain || mainDomain;
     for (const node of seloomSpecialNodes) {
-        const remark = `⚡ SELOOM | ${node.name} 🇮🇶`;
-        const conf = buildConfig(_VL_, node.addr, 443, activeDomain, activeDomain, remark);
+        const remark = `⚡ SELOOM - ${node.name} 🇮🇶`;
+        const nodeSni = node.sni || activeDomain;
+        const conf = buildConfig(_VL_, node.addr, 443, activeDomain, nodeSni, remark);
         seloomConfs += `${conf}\n`;
     }
     // ----------------------------------------

@@ -37,6 +37,7 @@ async function initPanel(settings, tgSettings, subscriptions, clients) {
             }
 
             settings = body.proxySettings;
+            window.globalProxySettings = settings;
             tgSettings = body.telegramSettings;
             subscriptions = body.subscriptions;
             clients = body.clients;
@@ -118,6 +119,7 @@ function isNewerVersion(latest, current) {
 }
 
 function renderPanel(proxySettings, tgSettings, subscriptions, clients) {
+    window.globalProxySettings = proxySettings;
     const {
         securePath,
         ports,
