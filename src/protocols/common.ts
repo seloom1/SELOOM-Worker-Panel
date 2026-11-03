@@ -15,6 +15,9 @@ export async function handleTCPOutBound(
     VLResponseHeader: Uint8Array<ArrayBuffer> | null,
     log: Function
 ) {
+    const origAddressRemote = addressRemote;
+    const origPortRemote = portRemote;
+
     async function connectAndWrite(address: string, port: number): Promise<Socket> {
         // if (/^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?).){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(address)) address = `${atob('d3d3Lg==')}${address}${atob('LnNzbGlwLmlv')}`;
         const tcpSocket = connect({
@@ -60,6 +63,25 @@ export async function handleTCPOutBound(
 
             remoteSocketToWS(tcpSocket, webSocket, VLResponseHeader, null, log);
         } catch (error) {
+            // Intelligent fallback: if selected Proxy IP fails, automatically fallback to NAT64 IPv6 gateway
+            if (proxyIpMode === 'proxyip' && prefixes && prefixes.length) {
+                try {
+                    log(`Proxy IP failed for ${origAddressRemote}, automatically falling back to NAT64 prefix`);
+                    const prefix = getRandomValue(prefixes);
+                    const dynamicProxyIP = await getDynamicProxyIP(origAddressRemote, prefix);
+                    if (dynamicProxyIP) {
+                        const fallbackSocket = await connectAndWrite(dynamicProxyIP, origPortRemote);
+                        fallbackSocket.closed
+                            .catch(err => console.log('fallback socket closed error', err))
+                            .finally(() => safeCloseWebSocket(webSocket));
+
+                        remoteSocketToWS(fallbackSocket, webSocket, VLResponseHeader, null, log);
+                        return;
+                    }
+                } catch (fallbackError) {
+                    console.error('NAT64 fallback failed:', fallbackError);
+                }
+            }
             console.error('Retry connection failed:', error);
             webSocket.close(1011, `Retry connection failed: ${safeError(error)}`);
         }
